@@ -105,7 +105,7 @@ console.log(calc(10, 3, 3)); // ділення: 10 / 3 = 3.3333...
 console.log(calc(10, 3, 4)); // додавання: 10 + 3 = 13*/
 
 //7 завдання
-function findUnique(arr) {
+/*function findUnique(arr) {
   for (let i = 0; i < arr.length; i++) {
     for (let j = i + 1; j < arr.length; j++) {
       if (arr[i] === arr[j]) {
@@ -116,7 +116,18 @@ function findUnique(arr) {
   return true; // Усі елементи унікальні, повертаємо true
 }
 console.log(findUnique([1, 2, 3, 5, 3])); // false
-console.log(findUnique([1, 2, 3, 5, 11])); // true
+console.log(findUnique([1, 2, 3, 5, 11])); // true*/
+
+//додаткове
+function create(password) {
+  return function(input) {
+    return input === password;
+  };
+}
+
+const tom = create("pass_for_Tom");
+console.log(tom("pass_for_Tom")); // поверне true
+console.log(tom("pass_for_tom")); // поверне false
 
 
 
