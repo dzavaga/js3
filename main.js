@@ -46,45 +46,30 @@ const arr = [5, 3, 4, 5, 6, 7, 3];
 const arr2 = compact(arr);
 console.log(arr2); // [5, 3, 4, 6, 7]
 // 5 завдання
-function funcName(arr) {
-  let numArr = [];
-  let strArr = [];
+function separateTypes(arr) {
+  const numberArray = [];
+  const stringArray = [];
 
   arr.forEach((item) => {
-    if (Array.isArray(item)) {
-      funcName(item).forEach((nestedItem) => {
-        if (typeof nestedItem === "number") {
-          numArr.push(nestedItem);
-        } else {
-          strArr.push(nestedItem);
-        }
-      });
+    if (typeof item === "number") {
+      numberArray.push(item);
+    } else if (Array.isArray(item)) {
+      const [innerNumberArray, innerStringArray] = separateTypes(item);
+      numberArray.push(...innerNumberArray);
+      stringArray.push(...innerStringArray);
     } else {
-      if (typeof item === "number") {
-        numArr.push(item);
-      } else {
-        strArr.push(item);
-      }
+      stringArray.push(item);
     }
   });
 
-  return [numArr, strArr];
+  return [numberArray, stringArray];
 }
 
-let arr = [
-  5,
-  "Limit",
-  12,
-  "a",
-  "3",
-  99,
-  2,
-  [2, 4, 3, "33", "a", "text"],
-  "strong",
-  "broun",
-];
-let arrNew = funcName(arr);
-console.log(arrNew); 
+const arr = [5, "Limit", 12, "a", "3", 99, 2, [2, 4, 3, "33", "a", "text"], "strong", "broun"];
+const arrNew = separateTypes(arr);
+
+console.log(arrNew); // [[5, 12, 99, 2, 2, 4, 3], ["Limit", "a", "3", "33", "a", "text", "strong", "broun"]]
+
 */
 //6 завдання
 /*function calc(a, b, op) {
